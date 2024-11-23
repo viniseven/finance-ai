@@ -76,6 +76,6 @@ body {
     @apply h-full;
   }
   body {
-    @apply h-full bg-background text-foreground;
+    @apply m-auto h-full max-w-[1360px] bg-background text-foreground;
   }
 }
