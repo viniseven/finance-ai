@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        danger: "hsl(0,81%,55%)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
