@@ -1,17 +1,17 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
-import { UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server"
+import { redirect } from "next/navigation"
+import { UserButton } from "@clerk/nextjs"
 
 export default async function HomePage() {
-  const { userId } = await auth();
+	const { userId } = await auth()
 
-  if (!userId) {
-    redirect("/login");
-  }
+	if (!userId) {
+		redirect("/login")
+	}
 
-  return (
-    <div>
-      <UserButton />
-    </div>
-  );
+	return (
+		<div>
+			<UserButton />
+		</div>
+	)
 }

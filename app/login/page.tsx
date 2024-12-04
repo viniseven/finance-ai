@@ -1,15 +1,15 @@
-import Image from "next/image";
-import { Button } from "../_components/ui/button";
-import { LogInIcon } from "lucide-react";
-import { SignInButton } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import Image from 'next/image';
+import { Button } from '../_components/ui/button';
+import { LogInIcon } from 'lucide-react';
+import { SignInButton } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
 export default async function LoginPage() {
   const { userId } = await auth();
 
   if (userId) {
-    redirect("/");
+    redirect('/');
   }
 
   return (
@@ -24,7 +24,7 @@ export default async function LoginPage() {
         </p>
 
         <SignInButton>
-          <Button variant={"outline"} className="mt-8 max-w-[488px]">
+          <Button variant={'outline'} className="mt-8 max-w-[488px]">
             <LogInIcon />
             Entrar ou criar conta
           </Button>
