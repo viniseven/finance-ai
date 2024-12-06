@@ -3,6 +3,8 @@
 import { Transaction } from "@prisma/client"
 import { ColumnDef } from "@tanstack/react-table"
 import TransactionTypeBadge from "../_components/badges"
+import { Button } from "@/app/_components/ui/button"
+import { SquareArrowOutUpRight, Trash2 } from "lucide-react"
 
 export const TransactionCategoryLabel = {
 	SERVICES: "Serviços",
@@ -64,18 +66,26 @@ export const transactionsColumns: ColumnDef<Transaction>[] = [
 	{
 		accessorKey: "amount",
 		header: "Valor",
-		cell: ({ row }) => {
-			const amount = parseFloat(row.getValue("amount"))
-			const value = new Intl.NumberFormat("pt-br", {
+		cell: ({ row: { original: transaction } }) =>
+			new Intl.NumberFormat("pt-BR", {
 				style: "currency",
 				currency: "BRL",
-			}).format(amount)
-
-			return <div>{value}</div>
-		},
+			}).format(Number(transaction.amount)),
 	},
 	{
 		accessorKey: "actions",
 		header: "",
+		cell: () => {
+			return (
+				<div>
+					<Button variant="ghost" className="hover:bg-transparent">
+						<SquareArrowOutUpRight className="text-gray-500" />
+					</Button>
+					<Button variant="ghost" className="hover:bg-transparent">
+						<Trash2 className="text-gray-500" />
+					</Button>
+				</div>
+			)
+		},
 	},
 ]
