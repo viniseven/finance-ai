@@ -8,8 +8,8 @@ export default async function TransactionsPage() {
 	const transactions = await db.transaction.findMany({})
 
 	return (
-		<div>
-			<div className="flex w-full items-center justify-between p-6">
+		<div className="p-6">
+			<div className="mb-6 flex w-full items-center justify-between">
 				<h1 className="text-2xl">Transações</h1>
 				<Button className="rounded-full">
 					Adicionar Transação <ArrowDownUpIcon />

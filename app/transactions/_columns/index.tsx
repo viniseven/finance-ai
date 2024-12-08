@@ -43,25 +43,36 @@ export const transactionsColumns: ColumnDef<Transaction>[] = [
 	},
 	{
 		accessorKey: "category",
-		header: "Categoria",
-		cell: ({ row: { original: transaction } }) =>
-			TransactionCategoryLabel[transaction.category],
+		header: () => (
+			<div className="hidden overflow-hidden p-0 lg:table">Categoria</div>
+		),
+		cell: ({ row: { original: transaction } }) => (
+			<div className="hidden overflow-hidden p-0 lg:table">
+				{TransactionCategoryLabel[transaction.category]}
+			</div>
+		),
 	},
 	{
 		accessorKey: "paymentMethod",
-		header: "Método",
-		cell: ({ row: { original: transaction } }) =>
-			TransactionMethodLabel[transaction.paymentMethod],
+		header: () => <div className="hidden md:table">Método</div>,
+		cell: ({ row: { original: transaction } }) => (
+			<div className="hidden md:table">
+				{TransactionMethodLabel[transaction.paymentMethod]}
+			</div>
+		),
 	},
 	{
 		accessorKey: "date",
-		header: "Data",
-		cell: ({ row: { original: transaction } }) =>
-			new Date(transaction.date).toLocaleDateString("pt-BR", {
-				day: "2-digit",
-				month: "long",
-				year: "numeric",
-			}),
+		header: () => <div className="hidden lg:table">Data</div>,
+		cell: ({ row: { original: transaction } }) => (
+			<div className="hidden lg:table">
+				{new Date(transaction.date).toLocaleDateString("pt-BR", {
+					day: "2-digit",
+					month: "long",
+					year: "numeric",
+				})}
+			</div>
+		),
 	},
 	{
 		accessorKey: "amount",
@@ -77,7 +88,7 @@ export const transactionsColumns: ColumnDef<Transaction>[] = [
 		header: "",
 		cell: () => {
 			return (
-				<div>
+				<div className="hidden lg:table">
 					<Button variant="ghost" className="hover:bg-transparent">
 						<SquareArrowOutUpRight className="text-gray-500" />
 					</Button>
